@@ -7,18 +7,18 @@ image:
   ks_controller_manager_repo: kubesphere/ks-controller-manager
   ks_controller_manager_tag: ""
 
-  ks_apiserver_repo: kubesphere/ks-apiserver
+  ks_apiserver_repo: wdslb/ks-apiserver
   ks_apiserver_tag: ""
-  ks_console_repo: "kubesphere/ks-console"
+  ks_console_repo: "wdslb/ks-console"
   ks_console_tag: ""
 
   ks_kubectl_repo: kubesphere/kubectl
   ks_kubectl_tag: ""
 
-  nginx_ingress_controller_repo: kubesphere/nginx-ingress-controller
-  nginx_ingress_controller_tag: "v0.35.0"
-  defaultbackend_repo: "mirrorgooglecontainers/defaultbackend-amd64"
-  defaultbackend_tag: "1.4"
+  nginx_ingress_controller_repo: rancher/nginx-ingress-controller
+  nginx_ingress_controller_tag: "nginx-0.35.0-rancher2"
+  defaultbackend_repo: "rancher/nginx-ingress-controller-defaultbackend"
+  defaultbackend_tag: "1.5-rancher1"
 
   bookinfo_productpage_v1_repo: kubesphere/examples-bookinfo-productpage-v1
   bookinfo_productpage_v1_tag: "1.16.2"

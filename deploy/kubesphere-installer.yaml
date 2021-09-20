@@ -280,8 +280,8 @@ spec:
       serviceAccountName: ks-installer
       containers:
       - name: installer
-        image: kubespheredev/ks-installer:latest
-        imagePullPolicy: "Always"
+        image: wdslb/ks-installer:latest
+        imagePullPolicy: "IfNotPresent"
         resources:
           limits:
             cpu: "1"
