@@ -4,7 +4,7 @@ replicaCount: 1
 
 image:
   # Overrides the image tag whose default is the chart appVersion.
-  ks_controller_manager_repo: kubesphere/ks-controller-manager
+  ks_controller_manager_repo: wdslb/ks-controller-manager
   ks_controller_manager_tag: ""
 
   ks_apiserver_repo: wdslb/ks-apiserver
