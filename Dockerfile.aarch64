@@ -1,9 +1,9 @@
-FROM golang:1.14-alpine3.13
+FROM golang:1.15-alpine3.13
 
 ARG appVersion=latest
 
 RUN apk --no-cache add git ca-certificates && \
-    git clone --branch v1.0.0-beta.5 https://github.com/flant/shell-operator.git /go/src/github.com/flant/shell-operator
+    git clone --branch v1.0.0 https://github.com/flant/shell-operator.git /go/src/github.com/flant/shell-operator
 
 RUN go get -d github.com/flant/shell-operator/...
 
@@ -12,17 +12,17 @@ WORKDIR /go/src/github.com/flant/shell-operator
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w -X 'github.com/flant/shell-operator/pkg/app.Version=$appVersion'" -o shell-operator ./cmd/shell-operator
 
 
-FROM python:3.9.6-alpine3.13
+FROM python:3.9.7-alpine3.13
 
 RUN apk --no-cache add jq gcc bash libffi-dev openssl-dev curl unzip musl-dev openssl && \
     export CRYPTOGRAPHY_DONT_BUILD_RUST=1 && \
     pip install --no-cache-dir ansible_runner==2.0.1 ansible==2.9.23 kubernetes && \
-    wget https://get.helm.sh/helm-v3.6.2-linux-amd64.tar.gz && \
-    tar -zxf helm-v3.6.3-linux-amd64.tar.gz && \
-    mv linux-amd64/helm /bin/helm && \
-    rm -rf *linux-amd64* && \
+    wget https://get.helm.sh/helm-v3.6.3-linux-arm64.tar.gz && \
+    tar -zxf helm-v3.6.3-linux-arm64.tar.gz && \
+    mv linux-arm64/helm /bin/helm && \
+    rm -rf *linux-arm64* && \
     chmod +x /bin/helm && \
-    wget https://storage.googleapis.com/kubernetes-release/release/v1.18.18/bin/linux/amd64/kubectl -O /bin/kubectl && \
+    wget https://dl.k8s.io/v1.19.15/bin/linux/arm64/kubectl -O /bin/kubectl && \
     chmod +x /bin/kubectl && \
     ln -s /bin/kubectl /usr/local/bin/kubectl && \
     ln -s /bin/helm /usr/local/bin/helm && \
